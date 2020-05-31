@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拷贝继承--mixin</title>
+</head>
+<body>
+<script>
+    
+    // 使用某个对象的属性 但又不想修改原对象的属性   典型应用：leaflet的extend  ---- 插件继承
+    var s1 = { sex: '男', classes: '1', group: '2', name: '张*' };
+
+
+    var s2 = {};
+    for(var attr in s1) {
+        s2[attr] = s1[attr];
+    }
+    s2.name = '李*';
+    
+    var s3 = { ...s1, name: '王*' }
+
+    console.log(s1.name);
+    console.log(s2.name);
+    console.log(s3.name);
+
+</script>
+</body>
+</html>

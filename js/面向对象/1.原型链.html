@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型链</title>
+</head>
+<body>
+<script>
+    // 若干个继承构成了原型链
+    function Person (name) {
+        this.name = name;
+    }
+
+    var p1 = new Person('hx');
+
+    console.log(p1.__proto__ === Person.prototype);   // true;
+    console.log(p1.__proto__.__proto__ === Object.prototype);   // true
+    // 万物继承于Object.prototype(根对象);
+
+
+    // constructor 指向对象的引用？？？
+    console.log(p1.constructor == Person);
+
+</script> 
+</body>
+</html>

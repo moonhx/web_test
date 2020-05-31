@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>借用构造函数继承</title>
+</head>
+<body>
+<script>
+    // 父类
+    function Animal (name, age, gender) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
+    // 子类
+    function Person (name, age, gender, say) {
+        // this.name = name;
+        // this.age = age;
+        // this.gender = gender;
+
+        // 简写
+        Animal.call(this, name, age, gender);
+
+        this.say = function (word) {
+            alert(word);
+        }
+    }
+
+</script>
+</body>
+</html>

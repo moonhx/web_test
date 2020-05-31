@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型继承</title>
+</head>
+<body>
+<script>    
+    // 创建一个空对象
+    // var clearObj = Object.create(null);
+
+    var person = { name: 'aaa', age: 18 };
+    var man = Object.create(person);
+    console.log(man.__proto__.name);           // bbb
+    person.name = 'bbb';
+    console.log(man.__proto__.name);           // bbb
+
+
+
+</script>
+</body>
+</html>
