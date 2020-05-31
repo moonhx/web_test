@@ -6,6 +6,16 @@
     <title>作用域</title>
 </head>
 <body>
-    
+<script>
+    // 作用域
+    function fn (callback) {
+        var age = 18;
+        callback();     // 这里是window作用域  所以输出为error
+    }
+
+    fn(function () {
+        console.log(age);  // error
+    });
+</script>
 </body>
 </html>
