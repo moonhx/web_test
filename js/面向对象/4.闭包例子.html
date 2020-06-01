@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包例子</title>
+</head>
+<body>
+</body>
+<script>
+    // 闭包
+    function NightClub() {
+        var leastPrice = 1000;
+        var total = 0;
+        return {
+            // 消费
+            buy: function (price) {
+                total += price;
+            },
+            // 结账
+            pay: function () {
+                if(total < leastPrice) {
+                    console.log('消费不够');
+                }else {
+                    console.log('welcome');
+                }
+            }
+        }
+    }
+
+    // 类
+    function NightClubTwo() {
+        this.leastPrice = 1000;
+        this.total = 0;
+    }
+    NightClubTwo.prototype.buy = function (price) {
+        this.total += price;
+    }
+    NightClubTwo.prototype.pay = function () {
+        if(this.total < this.leastPrice) {
+            console.log('消费不够');
+        }else {
+            console.log('welcome');
+        }
+    }
+
+    var p1 = new NightClubTwo();
+    p1.pay();
+
+    var p2 = new NightClubTwo();
+    p2.buy(111);
+    p2.buy(111);
+    p2.buy(900);
+    p2.pay();
+
+</script>
+</html>
