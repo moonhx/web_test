@@ -27,6 +27,13 @@
         }
     }
 
+    /*
+        new 补充
+        1. new 函数 相当于函数自己return this;  所以 this指向的是new等号左边被赋值的对象
+        2. 如果函数本身有return 则看return 什么？
+            ——return 基本类型的话，new 调用的话，还是返回this (number, string, ...)
+            ——return 对象， 则返回对象
+    */
 </script>
 </body>
 </html>

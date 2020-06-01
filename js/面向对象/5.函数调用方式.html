@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数调用方式</title>
+</head>
+<body>
+</body>
+<script>
+    var age = 18;
+    var person = {
+        age: 20,
+        say: function () {
+            console.log(this);
+            console.log(this.age);
+        },
+        play: function () {
+            return function (){
+                console.log(age);
+                console.log(this);
+                console.log(this.age);
+            }
+        }
+    }
+
+    // 1.函数调用
+    var p = person.say;
+    p();
+
+    // 2.方法调用
+    person.say();
+
+    // 3.构造函数方式调用
+    function Person (name) {
+        this.name = name;
+        return this;
+    }
+    var p1 = new Person();
+    console.log(p1.name);
+
+    // 4.call/apply/bind 调用
+    
+    /**
+        call 第一个参数就是this
+        1.如果传的是对象，那么this指向的就是该对象
+        2.如果是基本类型，那么this就是 new(基本类型)
+        3.如果是undefined、null，那么this就是window
+    */
+    person.say.call([1, 2]);        //  [1, 2]   undefined
+    person.say.call(null);        //  [1, 2]   undefined
+    person.say.call('aaa');        //  [1, 2]   undefined
+
+    /**
+        apply 和 call 不同的就是实参传递的方式 apply需要把实参放在一个数组中传递
+    */
+    person.say.apply(null, ['applyName']);
+    
+    /**
+        bind
+    */
+    person.play()();
+    // 改变 this 为 {age: 111}
+    var bindObj = person.play().bind({age: 111});
+    bindObj();
+
+
+    //  补充：
+    //  访问对象不存在的属性会输出undefined
+    //  不存在的变量输出会报错
+</script>
+</html>
